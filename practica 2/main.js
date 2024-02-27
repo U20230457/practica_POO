@@ -115,7 +115,7 @@ console.log(`El bono del empleado ${empleado2.getNombre()} es de $${empleado2.ca
 console.log(`El bono del empleado ${empleado3.getNombre()} es de $${empleado3.calcularBonificacion()}`)
 console.log(' ')
 
-//Agregar empleados segun departamentos.
+//Agregar empleados segun departamentos.    
 departamentoDesarrollo.agregarEmpleado(empleado1)
 departamentoDesarrollo.agregarEmpleado(empleado2)
 departamentoDiseño.agregarEmpleado(empleado3)

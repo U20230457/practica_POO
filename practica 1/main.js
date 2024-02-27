@@ -13,6 +13,14 @@ class Libro {
         this._disponibilidad = false
     }
 
+    devolver(){
+        if (!this._disponibilidad){
+            this._disponibilidad = true
+        }else{
+            console.log('El libro ya fue devueto')
+        }
+    }
+
 }
 
 class Socio{
@@ -28,6 +36,17 @@ class Socio{
             libro.prestar()
         }else{
             console.log('El libro no esta disponible')
+        }
+    }
+
+    devolverLibro(libro){
+        let librodisponible = this._libros.indexOf(libro)
+
+        if(librodisponible != -1){
+            this._libros.splice(librodisponible)
+            libro.devolver()
+        }else{
+            console.log('El libro ya fue devueto')
         }
     }
 

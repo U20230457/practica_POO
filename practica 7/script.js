@@ -25,6 +25,18 @@ class EspadaMadera extends Espada{
   get ATAQUE(){
     return this.ataque
   }
+
+  calcularCritico(){
+    return Math.floor(Math.random() * 100);
+  }
+
+  atacar(){
+    if (this.calcularCritico() < 50){
+      return (this.ataque + 10)
+    }else{
+      return this.ataque
+    }
+  }
 }
 
 class EspadaPiedra extends Espada{
@@ -83,23 +95,12 @@ class Zombie {
   get VIDA(){
     return this.vida
   }
-  
-  calcularCritico(){
-    return Math.floor(Math.random() * 100);
-  }
 
-  recibirAtaque(ataque){
+  recibirAtaque(espada){
     if (this.vida >= 1){
-      if (this.calcularCritico() < 15){
-        let vidaActual = this.vida - (ataque + 10)
-        this.vida = vidaActual
-        return vidaActual  
-      }else{
-        let vidaActual = this.vida - ataque
-        this.vida = vidaActual
-  
-        return vidaActual
-      }
+      let vidaActual = this.vida - espada.ataque
+      this.vida = vidaActual
+      return vidaActual  
     }else{
       alert('El zombie ha sido eliminado')
     }
@@ -126,7 +127,7 @@ document.getElementById('attackButton').addEventListener('click', function() {
   document.querySelector('.sword').style.transform = 'rotate(-45deg)';
   
 
-  document.getElementById('resultado').innerText = `El zombie tiene ${zombie1.recibirAtaque(espadaDeMadera.ataque)} de vida y recibe `
+  document.getElementById('resultado').innerText = `El zombie tiene ${zombie1.recibirAtaque(espadaDeMadera)} de vida y recibe ${espadaDeMadera.atacar()} de daño`
   
   
   
